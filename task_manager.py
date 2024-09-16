@@ -41,21 +41,23 @@ class TaskManager:
         tasks = self.storage.get_all_tasks()
         total_tasks = len(tasks)
         completed_tasks = [task for task in tasks if task.completed]
-        num_completed = len(completed_tasks)
-        num_pending = total_tasks - num_completed
+        pending_tasks = total_tasks - len(completed_tasks)
 
-        average_time = None
-        if num_completed > 0:
-            total_time = sum(
-                (task.completed_at - task.created_at).total_seconds()
-                for task in completed_tasks
-            )
-            average_time = total_time / num_completed / 3600  # Average time in hours
+        #Average time for completed tasks
+        if completed_tasks:
+             total_time = sum(
+				(task.completed_at - task.created_at).total_seconds()
+				for task in completed_tasks
+				if task.completed_at is not None and task.created_at is not None
+        )
+             average_time = total_time / len(completed_tasks)
+        else:
+            average_time = 0 # Average Time 0 for no completed tasks
 
         report = {
             "total": total_tasks,
-            "completed": num_completed,
-            "pending": num_pending,
+            "completed": len(completed_tasks),
+            "pending": pending_tasks,
             "average_completion_time_hours": average_time
         }
 
