@@ -22,17 +22,17 @@ The application should allow users to do the following:
 2. Clone this repository to your local machine.
 3. Navigate to the project directory in your terminal.
 4. Install Poetry if you don't have it installed:
-    ```
-    curl -sSL https://install.python-poetry.org | python3 -
-    ```
+   ```
+   curl -sSL https://install.python-poetry.org | python3 -
+   ```
 5. Install dependencies
-    ```
-    poetry install
-    ```
-6.  Running the application
-    ```
-    poetry run python main.py
-    ```
+   ```
+   poetry install
+   ```
+6. Running the application
+   ```
+   poetry run python main.py
+   ```
 
 ## Running Tests
 
@@ -54,3 +54,18 @@ Once you are done, please:
 2. Reply to our email with the repository link to complete your submission within the deadline
 
 Good luck!
+
+## My Submission
+
+To test all functionality use below commands:
+
+1. Add Task
+   `python main.py add "Task Title" "Task Description`
+2. Complete a task
+   `python main.py complete "Task Title" `
+3. Lists only incomplete tasks
+   `python main.py list`
+   Lists all tasks, including completed ones
+   `python main.py list --all`
+4. Generate a report of task statistics
+   `python main.py report`
